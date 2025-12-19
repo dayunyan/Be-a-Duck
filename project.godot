@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="BeADuck"
 
+[layer_names]
+
+2d_render/layer_1="World"
+2d_render/layer_2="Duck"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

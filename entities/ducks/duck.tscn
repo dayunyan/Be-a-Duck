@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhuvqpaoi2v02"]
+[gd_scene load_steps=19 format=3 uid="uid://dhuvqpaoi2v02"]
 
 [ext_resource type="Script" uid="uid://c4a2ouhlnvtf3" path="res://entities/ducks/scripts/Duck.cs" id="1_prhf6"]
 [ext_resource type="Texture2D" uid="uid://cc27emn14yvt0" path="res://addons/craftpix-net-291971-free-top-down-animals-farm-pixel-art-sprites/PNG/With_shadow/Turkey_animation_with_shadow.png" id="2_hpayr"]
@@ -89,7 +89,28 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Duck" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prhf6"]
+bg_color = Color(0.38170326, 0.38170326, 0.3817031, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpayr"]
+bg_color = Color(0.30837443, 0.631962, 0.8627437, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tr8yr"]
+bg_color = Color(0.38039216, 0.38039216, 0.38039216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exk4g"]
+bg_color = Color(0.8779244, 0.4760177, 0.2702191, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Duck" type="CharacterBody2D" groups=["Ducks"]]
+collision_layer = 2
 script = ExtResource("1_prhf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -105,3 +126,30 @@ sprite_frames = SubResource("SpriteFrames_8rx1m")
 animation = &"wander"
 autoplay = "idle"
 frame_progress = 0.6963811
+
+[node name="StatusUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -15.0
+offset_top = -35.0
+offset_right = 15.0
+offset_bottom = -25.0
+
+[node name="ThirstBar" type="ProgressBar" parent="StatusUI"]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 4.0
+theme_override_styles/background = SubResource("StyleBoxFlat_prhf6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hpayr")
+value = 50.0
+show_percentage = false
+
+[node name="HungerBar" type="ProgressBar" parent="StatusUI"]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 30.0
+offset_bottom = 9.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tr8yr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_exk4g")
+value = 30.0
+show_percentage = false
