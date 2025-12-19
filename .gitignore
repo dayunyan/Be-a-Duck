@@ -22,3 +22,5 @@ desktop.ini     # Windows系统
 .vscode/        # VSCode配置
 .idea/          # JetBrains IDE配置
 *.swp           # Vim临时文件
+
+.history/
