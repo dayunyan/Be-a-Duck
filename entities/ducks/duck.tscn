@@ -1,49 +1,58 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhuvqpaoi2v02"]
+[gd_scene load_steps=21 format=3 uid="uid://dhuvqpaoi2v02"]
 
-[ext_resource type="Script" uid="uid://c4a2ouhlnvtf3" path="res://entities/ducks/scripts/Duck.cs" id="1_prhf6"]
-[ext_resource type="Texture2D" uid="uid://cc27emn14yvt0" path="res://addons/craftpix-net-291971-free-top-down-animals-farm-pixel-art-sprites/PNG/With_shadow/Turkey_animation_with_shadow.png" id="2_hpayr"]
+[ext_resource type="Script" uid="uid://bbh4rv1m7ppqu" path="res://entities/ducks/scripts/duck.gd" id="1_prhf6"]
+[ext_resource type="Shader" uid="uid://baxqvpabo10tr" path="res://entities/ducks/assets/shaders/outline.gdshader" id="2_tr8yr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tr8yr"]
 radius = 22.022715
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exk4g"]
+shader = ExtResource("2_tr8yr")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/is_enabled = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_prhf6"]
+load_path = "res://.godot/imported/Turkey_animation_with_shadow.png-92f282dcdc48c2f21996aaaaed79e503.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_prhf6"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpayr"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(32, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tr8yr"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(64, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_exk4g"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(96, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1shp"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4rfcb"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(32, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kgtg3"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ce8re"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kihq"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(128, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f0kr6"]
-atlas = ExtResource("2_hpayr")
+atlas = SubResource("CompressedTexture2D_prhf6")
 region = Rect2(160, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8rx1m"]
@@ -111,6 +120,7 @@ corner_radius_bottom_left = 2
 
 [node name="Duck" type="CharacterBody2D" groups=["Ducks"]]
 collision_layer = 2
+input_pickable = true
 script = ExtResource("1_prhf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -121,13 +131,16 @@ wait_time = 2.0
 autostart = true
 
 [node name="AnimSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_exk4g")
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_8rx1m")
-animation = &"wander"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.6963811
+frame = 3
+frame_progress = 0.9468773
 
 [node name="StatusUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -15.0
@@ -153,3 +166,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_tr8yr")
 theme_override_styles/fill = SubResource("StyleBoxFlat_exk4g")
 value = 30.0
 show_percentage = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 20.0
+debug_enabled = true

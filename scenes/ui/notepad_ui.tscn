@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch8rmsdg0gl2l"]
+
+[ext_resource type="Script" uid="uid://dn8u0etlffywc" path="res://scenes/ui/scripts/notepad_ui.gd" id="1_elptl"]
+
+[node name="NotepadUI" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_elptl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TopBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "备忘录"
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+text = "X"
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "今天要记录些什么呢..."
+wrap_mode = 1
+
+[node name="SaveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "保存并关闭"

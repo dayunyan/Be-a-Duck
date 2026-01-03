@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1suubr00hpns"]
+
+[ext_resource type="Texture2D" uid="uid://xdw3oyr1o46p" path="res://entities/items/assets/Basic Plants.png" id="1_c6fvs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3yho"]
+radius = 7.0
+
+[node name="Food" type="Area2D" groups=["Food"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2951169, 1.36874)
+texture = ExtResource("1_c6fvs")
+hframes = 6
+vframes = 2
+frame = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k3yho")

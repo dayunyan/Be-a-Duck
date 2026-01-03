@@ -12,8 +12,12 @@ config_version=5
 
 config/name="BeADuck"
 run/main_scene="uid://cy7djktdnqxwd"
-config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameData="*res://globals/scripts/game_data.gd"
 
 [dotnet]
 
